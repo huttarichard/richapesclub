@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.12;
+pragma solidity 0.8.11;
 
 import "./ERC721A.sol";
 import "./Ownable.sol";
@@ -64,7 +64,7 @@ contract RichApesClub is ERC721A, Ownable, PaymentSplitter {
 
     // interaction with second contract
 
-    address secondContractAddress; // hardcoded, from constructor or set by method?
+    address secondContractAddress = 0xcaEcBd8e215b53C1AcFe23D02697D7Ca16d8EA8f; // hardcoded, from constructor or set by method?
 
     function getSecondContractBalanceOf() external view returns (uint) {
         return ISecondContract(secondContractAddress).balanceOf(msg.sender);
