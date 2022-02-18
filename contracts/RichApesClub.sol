@@ -22,6 +22,8 @@ contract RichApesClub is ERC721A, Ownable {
 
     uint256 immutable price = 77700000000000000; //0.0777 ETH
 
+    mapping(address => bool) public _claimed;
+
     // interaction with external contract
     address public externalContractAddress; // hardcoded, from constructor or set by method?
 
@@ -47,16 +49,22 @@ contract RichApesClub is ERC721A, Ownable {
     function claim() external payable {
         // add bool claimState and require?
         require(externalBalanceOf(msg.sender) > 0, "nothing to claim");
-        require(externalBalanceOf(msg.sender) != balanceOf(msg.sender), "already claimed"); // this is weak, should we store addresses which claimed?
+        require(!_claimed[msg.sender], "already claimed");
         require(externalBalanceOf(msg.sender) <= limitPerWallet, "can't mint so much tokens"); // this is per tx or overall? if overall we need to change to `externalBalanceOf(msg.sender) <= limitPerWallet - balanceOf(msg.sender)`
         require(totalSupply() + externalBalanceOf(msg.sender) <= maxMintSupply, "max supply exceeded");
 
         _safeMint(_msgSender(), externalBalanceOf(msg.sender));
+
+        _claimed[msg.sender] = true;
     }
 
     // new set baseURI method
     function setBaseURI(string calldata _tokenBaseURI) external onlyOwner {
         baseURI = _tokenBaseURI;
+    }
+
+    function withdraw() public onlyOwner {
+        payable(msg.sender).transfer(address(this).balance);
     }
 
     // ------------------------------------
