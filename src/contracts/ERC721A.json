@@ -12669,7 +12669,7 @@
         3063
       ],
       "Strings": [
-        3681
+        3630
       ]
     },
     "id": 2444,
@@ -12766,7 +12766,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 2444,
-        "sourceUnit": 3682,
+        "sourceUnit": 3631,
         "src": "228:23:5",
         "symbolAliases": [],
         "unitAlias": ""
@@ -12900,7 +12900,7 @@
               "id": 1272,
               "name": "Strings",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 3681,
+              "referencedDeclaration": 3630,
               "src": "849:7:5"
             },
             "nodeType": "UsingForDirective",
@@ -18172,7 +18172,7 @@
                                 "lValueRequested": false,
                                 "memberName": "toString",
                                 "nodeType": "MemberAccess",
-                                "referencedDeclaration": 3563,
+                                "referencedDeclaration": 3512,
                                 "src": "6131:16:5",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_function_internal_pure$_t_uint256_$returns$_t_string_memory_ptr_$bound_to$_t_uint256_$",
@@ -28121,7 +28121,7 @@
         3063
       ],
       "Strings": [
-        3681
+        3630
       ]
     },
     "id": 2444,
@@ -28218,7 +28218,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 2444,
-        "sourceUnit": 3682,
+        "sourceUnit": 3631,
         "src": "228:23:5",
         "symbolAliases": [],
         "unitAlias": ""
@@ -28352,7 +28352,7 @@
               "id": 1272,
               "name": "Strings",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 3681,
+              "referencedDeclaration": 3630,
               "src": "849:7:5"
             },
             "nodeType": "UsingForDirective",
@@ -33624,7 +33624,7 @@
                                 "lValueRequested": false,
                                 "memberName": "toString",
                                 "nodeType": "MemberAccess",
-                                "referencedDeclaration": 3563,
+                                "referencedDeclaration": 3512,
                                 "src": "6131:16:5",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_function_internal_pure$_t_uint256_$returns$_t_string_memory_ptr_$bound_to$_t_uint256_$",
@@ -43548,7 +43548,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-02-18T18:53:01.594Z",
+  "updatedAt": "2022-02-18T20:44:07.734Z",
   "devdoc": {
     "details": "Implementation of https://eips.ethereum.org/EIPS/eip-721[ERC721] Non-Fungible Token Standard, including the Metadata and Enumerable extension. Built to optimize for lower gas during batch mints. Assumes serials are sequentially minted starting at 0 (e.g. 0, 1, 2, 3..). Assumes the number of issuable tokens (collection size) is capped and fits in a uint128. Does not support burning tokens to address(0).",
     "kind": "dev",

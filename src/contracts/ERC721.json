@@ -10768,7 +10768,7 @@
         3063
       ],
       "Strings": [
-        3681
+        3630
       ]
     },
     "id": 1248,
@@ -10853,7 +10853,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 1248,
-        "sourceUnit": 3682,
+        "sourceUnit": 3631,
         "src": "253:23:4",
         "symbolAliases": [],
         "unitAlias": ""
@@ -10974,7 +10974,7 @@
               "id": 438,
               "name": "Strings",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 3681,
+              "referencedDeclaration": 3630,
               "src": "652:7:4"
             },
             "nodeType": "UsingForDirective",
@@ -13041,7 +13041,7 @@
                                 "lValueRequested": false,
                                 "memberName": "toString",
                                 "nodeType": "MemberAccess",
-                                "referencedDeclaration": 3563,
+                                "referencedDeclaration": 3512,
                                 "src": "3035:16:4",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_function_internal_pure$_t_uint256_$returns$_t_string_memory_ptr_$bound_to$_t_uint256_$",
@@ -21502,7 +21502,7 @@
         3063
       ],
       "Strings": [
-        3681
+        3630
       ]
     },
     "id": 1248,
@@ -21587,7 +21587,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 1248,
-        "sourceUnit": 3682,
+        "sourceUnit": 3631,
         "src": "253:23:4",
         "symbolAliases": [],
         "unitAlias": ""
@@ -21708,7 +21708,7 @@
               "id": 438,
               "name": "Strings",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 3681,
+              "referencedDeclaration": 3630,
               "src": "652:7:4"
             },
             "nodeType": "UsingForDirective",
@@ -23775,7 +23775,7 @@
                                 "lValueRequested": false,
                                 "memberName": "toString",
                                 "nodeType": "MemberAccess",
-                                "referencedDeclaration": 3563,
+                                "referencedDeclaration": 3512,
                                 "src": "3035:16:4",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_function_internal_pure$_t_uint256_$returns$_t_string_memory_ptr_$bound_to$_t_uint256_$",
@@ -32214,7 +32214,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-02-18T18:53:01.552Z",
+  "updatedAt": "2022-02-18T20:44:07.704Z",
   "devdoc": {
     "details": "Implementation of https://eips.ethereum.org/EIPS/eip-721[ERC721] Non-Fungible Token Standard, including the Metadata extension, but not including the Enumerable extension, which is available separately as {ERC721Enumerable}.",
     "kind": "dev",

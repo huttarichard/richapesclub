@@ -7,6 +7,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
+    "styled-components": "^5.3.3",
     "web-vitals": "^2.1.4",
     "web3modal": "^1.9.5"
   },
@@ -16,6 +17,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "compile": "truffle compile",
+    "deploy:kovan": "truffle deploy --network kovan",
     "verify:kovan": "truffle run verify RichApesClub --network kovan"
   },
   "eslintConfig": {
@@ -38,7 +40,7 @@
   },
   "devDependencies": {
     "@truffle/hdwallet-provider": "^2.0.3",
-    "react-error-overlay": "^6.0.10",
+    "react-error-overlay": "6.0.9",
     "truffle-plugin-verify": "^0.5.21"
   }
 }

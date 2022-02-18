@@ -13,30 +13,45 @@ contract RichApesClub is ERC721A, Ownable {
     using Strings for uint256;
     using Counters for Counters.Counter;
 
-    uint256 public maxMintSupply = 10000;
-    uint256 public limitPerWallet = 30;
+    uint256 immutable price = 77700000000000000; //0.0777 ETH
 
-    string public baseURI;
+    uint256 public maxMintSupply = 4444;
+    uint256 public limitPerWallet = 30;
 
     bool public publicState = true;
 
-    uint256 immutable price = 77700000000000000; //0.0777 ETH
+    string public baseURI;
+
+    address public externalContractAddress;
 
     mapping(address => bool) public _claimed;
 
-    // interaction with external contract
-    address public externalContractAddress; // hardcoded, from constructor or set by method?
+    constructor()
+        ERC721A("RichApesClub", "RAC", limitPerWallet, maxMintSupply) {
+        _transferOwnership(0x9530EcAaF1A01Ad6034e5aA6a36B06a6b8a103bf);
+    }
+
+    function enable() public onlyOwner {
+        publicState = true;
+    }
+
+    function disable() public onlyOwner {
+        publicState = false;
+    }
+
+    function setBaseURI(string calldata _tokenBaseURI) external onlyOwner {
+        baseURI = _tokenBaseURI;
+    }
 
     function setExternalContractAddress(address contractAddress) external onlyOwner {
         externalContractAddress = contractAddress;
     }
 
-    function externalBalanceOf(address owner) internal view returns (uint256) {
+    function externalBalanceOf(address owner) public view returns (uint256) {
         return IExternalContract(externalContractAddress).balanceOf(owner);
     }
 
-    // new mint
-    function newMint(uint256 _amount) external payable {
+    function mint(uint256 _amount) external payable {
         require(publicState, "mint disabled");
         require(_amount > 0, "zero amount");
         require(_amount <= limitPerWallet, "can't mint so much tokens"); // this is per tx or overall? if overall we need to change to `_amount <= limitPerWallet - balanceOf(msg.sender)`
@@ -58,39 +73,8 @@ contract RichApesClub is ERC721A, Ownable {
         _claimed[msg.sender] = true;
     }
 
-    // new set baseURI method
-    function setBaseURI(string calldata _tokenBaseURI) external onlyOwner {
-        baseURI = _tokenBaseURI;
-    }
-
     function withdraw() public onlyOwner {
         payable(msg.sender).transfer(address(this).balance);
-    }
-
-    // ------------------------------------
-    // rest
-
-    constructor()
-        ERC721A("RichApesClub", "RAC", limitPerWallet, maxMintSupply) {
-        _transferOwnership(0x9530EcAaF1A01Ad6034e5aA6a36B06a6b8a103bf);
-    }
-
-    function enable() public onlyOwner {
-        publicState = true;
-    }
-
-    function disable() public onlyOwner {
-        publicState = false;
-    }
-
-    function mint(uint256 _amount) external payable {
-        require(publicState, "mint disabled");
-        require(_amount > 0, "zero amount");
-        require(_amount <= limitPerWallet, "can't mint so much tokens");
-        require(totalSupply() + _amount <= maxMintSupply, "max supply exceeded");
-        require(msg.value >= price * _amount , "value sent is not correct");
-
-        _safeMint(_msgSender(), _amount);
     }
 
     function _baseURI() internal view override returns (string memory) {
