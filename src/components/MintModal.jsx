@@ -231,7 +231,7 @@ function MintModal({show, handleClose}) {
           <MintData>
             <div>
               <Ethereum />
-              <span>0.1 ETH</span>
+              <span>0.0777 ETH</span>
             </div>
             <div>
               <span>Maximum amount: {limit}</span>

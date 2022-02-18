@@ -70,7 +70,7 @@ class Wallet {
     const call = this.contract.methods.mint(quantity);
 
     const quantityBN = new window.web3.utils.BN(quantity)
-    const priceBN = new window.web3.utils.BN('100000000000000000')
+    const priceBN = new window.web3.utils.BN('77700000000000000')
 
     const value = quantityBN.mul(priceBN).toString()
 
