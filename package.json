@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "@truffle/hdwallet-provider": "^2.0.3",
+    "edit-json-file": "^1.7.0",
     "react-error-overlay": "6.0.9",
     "truffle-plugin-verify": "^0.5.21"
   }
