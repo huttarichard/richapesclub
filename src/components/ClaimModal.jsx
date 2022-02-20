@@ -87,7 +87,7 @@ const StyledButton = styled.button`
 function ClaimModal({show, handleClose}) {
   const [disabled, setDisabled] = useState(false);
   const [message, setMessage] = useState('');
-  const [toClaimAmount, setToClaimAmount] = useState(0);
+  const [toClaimAmount, setToClaimAmount] = useState(false);
   const { wallet, connectWallet } = useContext(WalletContext);
 
   useEffect(() => {
@@ -187,7 +187,9 @@ function ClaimModal({show, handleClose}) {
         <form onSubmit={handleSubmit}>
           <ModalFormDesc>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet vitae modi dolorem perferendis magnam aliquam pariatur dolorum saepe blanditiis commodi?</p>
-            <p><span>You are allowed to claim {toClaimAmount} Rich Apes</span></p>
+            {toClaimAmount !== false &&
+              <p><span>You are allowed to claim {toClaimAmount} Rich Apes</span></p>
+            }
           </ModalFormDesc>
           <StyledButton type="submit" disabled={disabled}>Claim</StyledButton>
           <ModalFormMessage>{message}</ModalFormMessage>
