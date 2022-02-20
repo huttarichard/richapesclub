@@ -217,7 +217,7 @@ function MintModal({show, handleClose}) {
         <h2>Mint</h2>
         <ModalForm onSubmit={handleSubmit}>
           <label>
-            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum eligendi error veniam alias, quaerat enim placeat quae nemo sit labore!</span>
+            <span>Rich Ape is your ticket to exclusive membership. Don't wait, and get yours today!</span>
             <input
               type="number"
               value={quantity}

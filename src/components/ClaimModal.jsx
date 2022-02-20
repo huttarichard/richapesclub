@@ -186,7 +186,7 @@ function ClaimModal({show, handleClose}) {
         <h2>Claim</h2>
         <form onSubmit={handleSubmit}>
           <ModalFormDesc>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet vitae modi dolorem perferendis magnam aliquam pariatur dolorum saepe blanditiis commodi?</p>
+            <p>If you previously bought Smoking Ape you will be eligible to claim Rich Ape for free! Get yours now!</p>
             {toClaimAmount !== false &&
               <p><span>You are allowed to claim {toClaimAmount} Rich Apes</span></p>
             }

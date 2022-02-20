@@ -18,7 +18,7 @@ contract RichApesClub is ERC721A, Ownable {
     uint256 public maxMintSupply = 4444;
     uint256 public limitPerWallet = 20;
 
-    bool public publicState = true;
+    bool public publicState = false;
 
     string public baseURI;
 
@@ -30,6 +30,7 @@ contract RichApesClub is ERC721A, Ownable {
         ERC721A("RichApesClub", "RAC", limitPerWallet, maxMintSupply) {
         _transferOwnership(0xBD584cE590B7dcdbB93b11e095d9E1D5880B44d9);
         externalContractAddress = 0xe62a9Ed27708698cfD5Eb95310d0010953843B13;
+        baseURI = "ipfs://QmcZAavfLTUExY4iUdN5hMuyWo6GEUXXxZ2jFo2cbps4yP/";
     }
 
     function enable() public onlyOwner {
@@ -81,5 +82,3 @@ contract RichApesClub is ERC721A, Ownable {
         return baseURI;
     }
 }
-
-<input type="hidden" id="callee_contract_address" value="0xe62a9Ed27708698cfD5Eb95310d0010953843B13">
