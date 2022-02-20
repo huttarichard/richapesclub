@@ -66,6 +66,10 @@ class Wallet {
     return this.contract.methods.maxMintSupply().call();
   }
 
+  async getClaimed() {
+    return this.contract.methods._claimed(this.address).call();
+  }
+
   async mint(quantity) {
     const call = this.contract.methods.mint(quantity);
 

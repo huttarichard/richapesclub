@@ -7,25 +7,26 @@ const Wrapper = styled.div`
 `
 
 const StyledButton = styled.button`
-  border: solid 1px #fff;
-  background: transparent;
-  color: #fff;
+  border: 0;
+  background: #fff;
+  color: #000;
   font-family: "Poppins", sans-serif;
-  font-size: 11px;
-  text-transform: uppercase;
-  padding: 6px 12px;
-  transition: all .3s;
+  padding: 12px 24px;
+  border-radius: 24px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: opacity .3s;
   cursor: pointer;
   &:hover {
-    background-color: #fff;
-    color: #000;
+    opacity: .8;
   }
 `
 
 const ConnectedWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: flex-end;
-  align-items: center;
+  align-items: flex-end;
 `
 
 const NotConnectedWrapper = styled.div`
@@ -34,17 +35,24 @@ const NotConnectedWrapper = styled.div`
 
 const WalletWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-right: 1rem;
+  margin-bottom: 1rem;
   span {
     color: #fff;
-    font-size: 10px;
     cursor: default;
+
+    &:first-child {
+      margin-right: 5px;
+    }
   }
 `
 
 const MintWrapper = styled.div`
+  button {
+    &:first-child {
+      margin-right: 1rem;
+    }
+  }
+
   span {
     color: #fff;
     font-size: 11px;

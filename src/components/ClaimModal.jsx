@@ -69,7 +69,7 @@ const StyledButton = styled.button`
   color: #000;
   font-family: "Poppins", sans-serif;
   padding: 12px 24px;
-  border-radius: 20px;
+  border-radius: 24px;
   font-size: 16px;
   font-weight: 500;
   margin-bottom: 1rem;
@@ -91,17 +91,40 @@ function ClaimModal({show, handleClose}) {
   const { wallet, connectWallet } = useContext(WalletContext);
 
   useEffect(() => {
-    const checkPublicState = async () => {
+    if (!wallet) {
+      return
+    }
+
+    const checkConditions = async () => {
       const publicState = await wallet.getPublicState()
 
       if (!publicState) {
         setDisabled(true)
-
         setMessage('Claiming disabled. Come back later.')
-      }
-    }
 
-    const checkLimit = async () => {
+        return
+      }
+
+      const claimed = await wallet.getClaimed()
+
+      if (claimed) {
+        setDisabled(true)
+        setMessage('Already claimed!')
+
+        return
+      }
+
+      const amount = await wallet.getExternalBalanceOf()
+
+      if (amount === 0) {
+        setDisabled(true)
+        setMessage('Nothing to claim')
+
+        return
+      }
+
+      setToClaimAmount(amount)
+
       const totalSupply = await wallet.getTotalSupply()
       const maxMintSupply = await wallet.getMaxMintSupply()
       const limitPerWallet = await wallet.getLimitPerWallet()
@@ -110,32 +133,19 @@ function ClaimModal({show, handleClose}) {
       if (maxMintSupply - totalSupply === 0) {
         setDisabled(true)
         setMessage('Max supply exceeded')
+
+        return
       } else {
         if (amountMinted >= limitPerWallet) {
           setDisabled(true)
           setMessage(`You reached the limit of ${limitPerWallet} per wallet`)
+
+          return
         }
       }
     }
 
-    const checkToClaimAmount = async () => {
-      const amount = await wallet.getExternalBalanceOf() 
-
-      if (amount === 0) {
-        setDisabled(true)
-        setMessage('Nothing to claim')
-      }
-
-      setToClaimAmount(amount)
-    }
-
-    if (!wallet) {
-      return
-    }
-
-    checkPublicState()
-    checkLimit()
-    checkToClaimAmount()
+    checkConditions()
   }, [wallet])
 
   const handleSubmit = async (e) => {
@@ -149,6 +159,8 @@ function ClaimModal({show, handleClose}) {
       if (res.status) {
         connectWallet()
         setMessage('Congrats, claiming process completed!');
+
+        handleClose()
       } else {
         setMessage('Something went wrong, try again later.');
       }

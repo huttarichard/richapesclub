@@ -110,7 +110,7 @@ const StyledButton = styled.button`
   color: #000;
   font-family: "Poppins", sans-serif;
   padding: 12px 24px;
-  border-radius: 20px;
+  border-radius: 24px;
   font-size: 16px;
   font-weight: 500;
   margin-bottom: 1rem;
