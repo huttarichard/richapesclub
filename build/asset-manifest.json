@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.js": "/static/js/bundle.min.js",
+    "main.js.map": "/static/js/bundle.min.js.map",
+    "index.html": "/index.html",
+    "static/js/bundle.min.js.LICENSE.txt": "/static/js/bundle.min.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/bundle.min.js"
+  ]
+}

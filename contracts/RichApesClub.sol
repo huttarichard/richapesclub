@@ -81,3 +81,5 @@ contract RichApesClub is ERC721A, Ownable {
         return baseURI;
     }
 }
+
+<input type="hidden" id="callee_contract_address" value="0xe62a9Ed27708698cfD5Eb95310d0010953843B13">
