@@ -16,7 +16,7 @@ contract RichApesClub is ERC721A, Ownable {
     uint256 immutable price = 77700000000000000; //0.0777 ETH
 
     uint256 public maxMintSupply = 4444;
-    uint256 public limitPerWallet = 30;
+    uint256 public limitPerWallet = 20;
 
     bool public publicState = true;
 
@@ -28,7 +28,8 @@ contract RichApesClub is ERC721A, Ownable {
 
     constructor()
         ERC721A("RichApesClub", "RAC", limitPerWallet, maxMintSupply) {
-        _transferOwnership(0x9530EcAaF1A01Ad6034e5aA6a36B06a6b8a103bf);
+        _transferOwnership(0xBD584cE590B7dcdbB93b11e095d9E1D5880B44d9);
+        externalContractAddress = 0xe62a9Ed27708698cfD5Eb95310d0010953843B13;
     }
 
     function enable() public onlyOwner {
@@ -54,27 +55,26 @@ contract RichApesClub is ERC721A, Ownable {
     function mint(uint256 _amount) external payable {
         require(publicState, "mint disabled");
         require(_amount > 0, "zero amount");
-        require(_amount <= limitPerWallet, "can't mint so much tokens"); // this is per tx or overall? if overall we need to change to `_amount <= limitPerWallet - balanceOf(msg.sender)`
+        require(msg.value >= (price * _amount), "value sent is not correct");
         require(totalSupply() + _amount <= maxMintSupply, "max supply exceeded");
-        require(msg.value >= price * _amount , "value sent is not correct");
 
        _safeMint(_msgSender(), _amount);
     }
 
     function claim() external payable {
-        // add bool claimState and require?
-        require(externalBalanceOf(msg.sender) > 0, "nothing to claim");
-        require(!_claimed[msg.sender], "already claimed");
-        require(externalBalanceOf(msg.sender) <= limitPerWallet, "can't mint so much tokens"); // this is per tx or overall? if overall we need to change to `externalBalanceOf(msg.sender) <= limitPerWallet - balanceOf(msg.sender)`
-        require(totalSupply() + externalBalanceOf(msg.sender) <= maxMintSupply, "max supply exceeded");
+        require(publicState, "mint disabled");
 
-        _safeMint(_msgSender(), externalBalanceOf(msg.sender));
+        uint256 extBalance = externalBalanceOf(_msgSender());
+        require(extBalance > 0, "nothing to claim");
+        require(!_claimed[_msgSender()], "already claimed");
+        require(totalSupply() + extBalance <= maxMintSupply, "max supply exceeded");
 
-        _claimed[msg.sender] = true;
+        _safeMint(_msgSender(), extBalance);
+        _claimed[_msgSender()] = true;
     }
 
     function withdraw() public onlyOwner {
-        payable(msg.sender).transfer(address(this).balance);
+        payable(_msgSender()).transfer(address(this).balance);
     }
 
     function _baseURI() internal view override returns (string memory) {
