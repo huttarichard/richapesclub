@@ -217,7 +217,10 @@ function MintModal({show, handleClose}) {
         <h2>Mint</h2>
         <ModalForm onSubmit={handleSubmit}>
           <label>
-            <span>Rich Ape is your ticket to exclusive membership. Don't wait, and get yours today!</span>
+            <span>
+            Your Rich Ape Club NFT is your ticket and membership to an exclusive community of NFT collectors and investors.
+            Join us for weekly virtual classes, get whitelisted for vetted NFT projects and more.
+            </span>
             <input
               type="number"
               value={quantity}

@@ -186,7 +186,9 @@ function ClaimModal({show, handleClose}) {
         <h2>Claim</h2>
         <form onSubmit={handleSubmit}>
           <ModalFormDesc>
-            <p>If you previously bought Smoking Ape you will be eligible to claim Rich Ape for free! Get yours now!</p>
+            <p>
+              If you previously bought a Smoking Apes Family NFT you will be eligible to claim a Rich Ape for free for each one! Claim now!
+            </p>
             {toClaimAmount !== false &&
               <p><span>You are allowed to claim {toClaimAmount} Rich Apes</span></p>
             }
