@@ -144,26 +144,26 @@ function MintModal({show, handleClose}) {
     }
 
     const checkLimit = async () => {
-      const totalSupply = await wallet.getTotalSupply()
-      const maxMintSupply = await wallet.getMaxMintSupply()
+      // const totalSupply = await wallet.getTotalSupply()
+      // const maxMintSupply = await wallet.getMaxMintSupply()
+      // const amountMinted = await wallet.getBalanceOf()
       const limitPerWallet = await wallet.getLimitPerWallet()
-      const amountMinted = await wallet.getBalanceOf()
-
-      if (maxMintSupply - totalSupply === 0) {
-        setDisabled(true)
-        setMessage('Max supply exceeded')
-      } else {
-        if (limitPerWallet > amountMinted) {
-          if (limitPerWallet - amountMinted > maxMintSupply - totalSupply) {
-            setLimit(maxMintSupply - totalSupply)
-          } else {
-            setLimit(limitPerWallet - amountMinted)
-          }
-        } else {
-          setDisabled(true)
-          setMessage(`You reached the limit of ${limitPerWallet} per wallet`)
-        }
-      }
+      setLimit(limitPerWallet);
+      // if (maxMintSupply - totalSupply === 0) {
+      //   setDisabled(true)
+      //   setMessage('Max supply exceeded')
+      // } else {
+      //   if (limitPerWallet > amountMinted) {
+      //     if (limitPerWallet - amountMinted > maxMintSupply - totalSupply) {
+      //       setLimit(maxMintSupply - totalSupply)
+      //     } else {
+      //       setLimit(limitPerWallet - amountMinted)
+      //     }
+      //   } else {
+      //     setDisabled(true)
+      //     setMessage(`You reached the limit of ${limitPerWallet} per wallet`)
+      //   }
+      // }
     }
 
     if (!wallet) {
@@ -171,7 +171,7 @@ function MintModal({show, handleClose}) {
     }
 
     checkPublicState()
-    // checkLimit()
+    checkLimit()
   },[wallet])
 
   const handleSubmit = async (e) => {
