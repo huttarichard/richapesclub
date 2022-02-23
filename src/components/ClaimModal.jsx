@@ -115,8 +115,8 @@ function ClaimModal({show, handleClose}) {
       }
 
       const amount = await wallet.getExternalBalanceOf()
-
-      if (amount === 0) {
+      
+      if (amount == 0) {
         setDisabled(true)
         setMessage('Nothing to claim')
 
