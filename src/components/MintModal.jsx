@@ -171,7 +171,7 @@ function MintModal({show, handleClose}) {
     }
 
     checkPublicState()
-    checkLimit()
+    // checkLimit()
   },[wallet])
 
   const handleSubmit = async (e) => {
